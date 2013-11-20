@@ -1,8 +1,5 @@
-using System;
 using Android.App;
 using Android.Content;
-using Android.Runtime;
-using Android.Views;
 using Android.Widget;
 using Android.OS;
 using Android.Bluetooth;
@@ -32,18 +29,4 @@ namespace Jukeboxer
 			RegisterReceiver(receiver, bluetoothFilter);
 		}
 	}
-
-	public class BluetoothReceiver : BroadcastReceiver
-	{
-		public override void OnReceive(Context context, Intent intent)
-		{
-			if(BluetoothDevice.ActionFound == intent.Action)
-			{
-				var device = (BluetoothDevice)intent.GetParcelableExtra(BluetoothDevice.ExtraDevice);
-				Toast.MakeText(context, device.Name, ToastLength.Long).Show();
-			}
-		}
-	}
 }
-
-
